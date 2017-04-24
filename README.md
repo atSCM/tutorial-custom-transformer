@@ -142,3 +142,67 @@ export default class BabelTransformer extends PartialTransformer {
 
 }
 ```
+
+## Step 5: Implement *Transformer#transformFromFilesystem*
+
+Implementing [Transformer#transformFromFilesystem](https://doc.esdoc.org/github.com/atSCM/atscm/class/src/lib/transform/Transformer.js~Transformer.html#instance-method-transformFromFilesystem) is probably the most important part of this tutorial. In here we define the logic that actually creates ES5 code from ES2015 sources.
+
+First of all, we need to **install additional dependencies** required. Running
+
+```bash
+npm install --save-dev babel-core babel-preset-2015
+```
+
+will install [Babel](http://babeljs.io) and it's ES2015 preset. This preset ensures all ES5 compatible browsers will be able to run the resulting code.
+
+We will also need the [node.js buffer module](https://nodejs.org/api/buffer.html). We don't need to install it, as it comes with every node installation.
+
+Next, import these modules as usual:
+
+```javascript
+// BabelTransformer.js
+
+import { Buffer } from 'buffer';
+import { PartialTransformer } from 'atscm';
+import { transform } from 'babel-core';
+
+...
+```
+
+The import order follows pretty usual convention:
+
+ 1. Core **node.js modules** (*buffer* in our case)
+ 2. Other **absolute modules** (*babel-core* and *atscm* in our case)
+ 3. **Relative modules** (*./atscm/BabelTransformer.js* inside *Atviseproject.babel.js* in our case)
+ 
+Now we're ready to implement *Transformer#transformFromFilesystem*. What we're about to do is pretty simple:
+ 
+ - We'll transpile the contents of the passed file with babels *transform* method
+ - We clone the passed file and set it's contents to a Buffer containing the resulting code
+ - We pass the resulting file to other streams
+
+```javascript
+import ...
+
+export default class BabelTransformer extends PartialTransformer {
+  
+  static shouldBeTransformed(file) { ... }
+  
+  transformFromFilesystem(file, enc, callback) {
+    // Create ES5 code
+    const { code } = transform(file.contents, {
+      presets: ['es2015']
+    });
+    
+    // Create new file with ES5 content
+    const result = file.clone();
+    result.contents = Buffer.from(code);
+    
+    // We're done, pass the new file to other streams
+    callback(null, result);
+  }
+  
+}
+```
+
+**Wow!** You just implemented your first custom transformer! Now we can write any scripts using the new ES2015 syntax.
