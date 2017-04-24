@@ -27,6 +27,11 @@ export default class TutorialCustomTransformer extends Atviseproject {
     };
   }
 
+  static get ignoreNodes() {
+    return super.ignoreNodes
+      .concat(['ns=1;s=SYSTEM.LIBRARY.ATVISE'])
+  }
+
   static get useTransformers() {
     return super.useTransformers
       .concat(new BabelTransformer());

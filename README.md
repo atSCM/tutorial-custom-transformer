@@ -15,7 +15,25 @@ Basically, transformers can be stored anywhere inside your *atscm* project. When
 
 In order to have the same starting point, create a new *atscm* project to follow this tutorial. Run `atscm init` and **pick ES2015 as configuration language**.
 
-Pull the empty project by running `atscm pull`. We'll use the default project files for testing later.
+As for now the atvise library is written in old ES5 JavaScript, we'll ignore it in our project. Adjust your project configuration accordingly:
+
+```javascript
+// Atviseproject.babel.js
+
+...
+
+export default class MyProject extends Atviseproject {
+  ...
+  
+  static get ignoreNodes() {
+    return super.ignoreNodes
+      .concat(['ns=1;s=SYSTEM.LIBRARY.ATVISE'])
+  }
+  
+}
+```
+
+Pull the empty project by **running `atscm pull`**. We'll use the default project files for testing later.
 
 As suggested above, we'll store our custom transformer inside a new directory, `./atscm`. Create the directory, enter it and create an empty file called *BabelTransformer.js*:
 
