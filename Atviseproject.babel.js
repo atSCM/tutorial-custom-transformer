@@ -1,4 +1,5 @@
 import { Atviseproject } from 'atscm';
+import BabelTransformer from './atscm/BabelTransformer';
 
 /**
  * atvise-scm configuration of tutorial-custom-transformer.
@@ -24,6 +25,11 @@ export default class TutorialCustomTransformer extends Atviseproject {
       opc: 4840,
       http: 80,
     };
+  }
+
+  static get useTransformers() {
+    return super.useTransformers
+      .concat(new BabelTransformer());
   }
 
 }

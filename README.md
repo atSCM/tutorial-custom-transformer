@@ -50,3 +50,55 @@ export default class BabelTransformer extends PartialTransformer {
 ```
 
 We just created a *PartialTransformer* subclass that is exported as the file's default export. For more detailed information on ES2015's module system [take a look at the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export). 
+
+## Step 3: Use *BabelTransformer*
+
+By default, *atscm* uses just some standard transformers. Any additional transformers must be configured to use inside the project's *Atviseproject* file.
+
+First of all, we have to import our newly created *BabelTransformer* class:
+
+```javascript
+// Atviseproject.babel.js
+
+import { Atviseproject } from 'atscm'
+import BabelTransformer from './atscm/BabelTransformer';
+
+export default class MyProject extends Atviseproject { ... }
+```
+
+Now we override the *Atviseproject.useTransformers* [getter](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/get) to use our transformers:
+
+```javascript
+// Atviseproject.babel.js
+
+...
+
+export default class MyProject extends Atviseproject {
+  ...
+  
+  static get useTransformers() {
+    return super.useTransformers
+      .concat(new BabelTransformer());
+  }
+  
+}
+```
+
+This statement tells *atscm* to use a new *BabelTransformer* instance **in addition to the default transformers** (`super.useTransformers`).
+
+To verify everything worked so far run `atscm config`. Our new Transformer should show up in the *useTransformers* section:
+
+```
+lukashechenberger:custom-transformer lukas$ atscm config
+[10:44:55] Configuration at ~/Documents/Bachmann/atscm/tutorials/custom-transformer/Atviseproject.babel.js 
+{ host: 'localhost',
+  port: 
+   { opc: 4840,
+     http: 80 },
+  useTransformers: 
+   [ DisplayTransformer<>,
+     ScriptTransformer<>,
+     BabelTransformer<> ],
+  nodes: 
+...
+```
