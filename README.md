@@ -34,3 +34,19 @@ As we don't want to implement things twice we'll subclass *atscm*'s [Transformer
 
 import { PartialTransformer } from 'atscm';
 ```
+
+## Step 2: Create the *BabelTransformer* class
+
+The next step is to create and export out Transformer class:
+
+```javascript
+// BabelTransformer.js
+
+import { PartialTransformer } from 'atscm';
+
+export default class BabelTransformer extends PartialTransformer {
+  
+}
+```
+
+We just created a *PartialTransformer* subclass that is exported as the file's default export. For more detailed information on ES2015's module system [take a look at the docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export). 
