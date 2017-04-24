@@ -206,3 +206,28 @@ export default class BabelTransformer extends PartialTransformer {
 ```
 
 **Wow!** You just implemented your first custom transformer! Now we can write any scripts using the new ES2015 syntax.
+
+## Step 6: Test *BabelTransformer*
+
+It's time to check if everything works as expected. Create a script file for the Main display containing ES2015 JavaScript:
+ 
+```javascript
+// src/AGENT/DISPLAYS/Main.display/Main.js
+
+// Class syntax
+class Test {
+  
+  constructor(options = {}, ...otherArgs) { // Default values and rest params
+    this.options = options;
+    this.args = otherArgs.map(arg => parseInt(arg)); // Arrows and Lexical This
+  }
+  
+}
+
+const a = 13; // Constants
+const { options, args } = new Test({ a }, '23'); // Enhanced Object Literals
+
+alert(`Option a: ${options.a}, args: ${args.join(', ')}`); // Template Strings
+```
+
+Run `atscm push` to upload the new display script to atvise server. Open your atvise project in your favorite browser (you may have to delete the browser cache) and if everything worked you should see an alert box containing the text "Option a: 13, args: 23". When you inspect the page's source you'll see the display script code was transpiled to ES5.
