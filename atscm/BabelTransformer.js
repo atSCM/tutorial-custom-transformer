@@ -24,4 +24,8 @@ export default class BabelTransformer extends PartialTransformer {
     callback(null, result);
   }
 
+  transformFromDB(file, enc, callback) {
+    callback(null); // Ignore file, remove it from the stream
+  }
+
 }

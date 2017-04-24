@@ -231,3 +231,26 @@ alert(`Option a: ${options.a}, args: ${args.join(', ')}`); // Template Strings
 ```
 
 Run `atscm push` to upload the new display script to atvise server. Open your atvise project in your favorite browser (you may have to delete the browser cache) and if everything worked you should see an alert box containing the text "Option a: 13, args: 23". When you inspect the page's source you'll see the display script code was transpiled to ES5.
+
+## Step 7: Implement *Transformer#transformFromDB*
+
+As said at the beginning, atscm transformers allow transformation from and to the filesystem. A babel transpilation is a one-way process, meaning you cannot create ES2015 source code from the resulting ES5 code. Therefore the only thing we can do when transforming from atvise server to the filesystem is to prevent an override.
+  
+We do so by implementing [Transformer#transformFromDB](https://doc.esdoc.org/github.com/atSCM/atscm/class/src/lib/transform/Transformer.js~Transformer.html#instance-method-transformFromDB):
+
+```
+// BabelTransformer.js
+...
+
+export default class BabelTransformer extends PartialTransfromer {
+  ...
+  
+  transformFromDB(file, enc, callback) {
+    // Optionally, we could print a warning here
+    callback(null); // Ignore file, remove it from the stream
+  }
+}
+
+```
+
+Now we can run `atscm push` without overriding our ES2015 source code.
