@@ -14,8 +14,6 @@ export default class BabelTransformer extends PartialTransformer {
       presets: ['es2015']
     });
 
-    console.log(code);
-
     // Create new file with ES5 content
     const result = file.clone();
     result.contents = Buffer.from(code);
