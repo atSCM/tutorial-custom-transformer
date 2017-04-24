@@ -1,0 +1,16 @@
+{
+  "name": "tutorial-custom-transformer",
+  "version": "0.1.0",
+  "description": "Tutorial on how to create a custom transformer",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lukas Hechenberger <lukas.hechenberger@bachmann.info>",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "atscm": "^0.2.4",
+    "babel-preset-node6": "^11.0.0",
+    "babel-register": "^6.24.1"
+  }
+}
