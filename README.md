@@ -254,3 +254,53 @@ export default class BabelTransformer extends PartialTransfromer {
 ```
 
 Now we can run `atscm push` without overriding our ES2015 source code.
+
+## Result
+
+This is how your custom transformer should look now:
+
+```javascript
+// BabelTransformer.js
+
+import { Buffer } from 'buffer';
+import { PartialTransformer } from 'atscm';
+import { transform } from 'babel-core';
+
+export default class BabelTransformer extends PartialTransformer {
+
+  shouldBeTransformed(file) {
+    return file.extname === '.js';
+  }
+
+  transformFromFilesystem(file, enc, callback) {
+    // Create ES5 code
+    const { code } = transform(file.contents, {
+      presets: ['es2015']
+    });
+
+    // Create new file with ES5 content
+    const result = file.clone();
+    result.contents = Buffer.from(code);
+
+    // We're done, pass the new file to other streams
+    callback(null, result);
+  }
+
+  transformFromDB(file, enc, callback) {
+    callback(null); // Ignore file, remove it from the stream
+  }
+
+}
+```
+
+## Conclusion
+
+We just created a ES2015-Transformer in no time. It transpiles ES2015 code on push and prevents overriding this code on pull.
+
+Of course there are many ways to improve the transformer, for example:
+
+ - Handle options to configure how babel transpiles the source code
+ 
+## Further reading
+
+ - [babeljs.io](http://babeljs.io/learn-es2015/) provides a nice overview of ES2015 features. You can also use the [REPL](http://babeljs.io/repl/) to try out these features.
