@@ -1,1 +1,1 @@
-
+import { PartialTransformer } from 'atscm';
