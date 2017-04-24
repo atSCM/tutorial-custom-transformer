@@ -102,3 +102,23 @@ lukashechenberger:custom-transformer lukas$ atscm config
   nodes: 
 ...
 ```
+
+## Step 4: Implement *PartialTransformer.shouldBeTransformed*
+
+[PartialTransformer.shouldBeTransformed](https://doc.esdoc.org/github.com/atSCM/atscm/class/src/lib/transform/PartialTransformer.js~PartialTransformer.html#instance-method-shouldBeTransformed) is responsible for filtering the files we want to transform. Returning `true` means the piped file will be transformed, `false` bypasses the file.
+ 
+In out case we want to edit all JavaScript source files. Therefore we return true for all files with the extension `.js`. Edit *BabelTransformer.js* accordingly:
+
+```javascript
+// BabelTransformer
+
+...
+
+export default class BabelTransformer extends PartialTransformer {
+
+  static shouldBeTransformed(file) {
+    return file.extname === '.js';
+  }
+
+}
+```
