@@ -115,6 +115,7 @@ This statement tells *atscm* to use a new *BabelTransformer* instance **in addit
 To verify everything worked so far run `atscm config`. Our new Transformer should show up in the *useTransformers* section:
 
 ```
+$ atscm config
 [08:38:16] Configuration at ~/custom-transformer/Atviseproject.babel.js 
 { host: '10.211.55.4',
   port: 
