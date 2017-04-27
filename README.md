@@ -253,7 +253,6 @@ export default class BabelTransformer extends PartialTransfromer {
     callback(null); // Ignore file, remove it from the stream
   }
 }
-
 ```
 
 Now we can run `atscm push` without overriding our ES2015 source code.
