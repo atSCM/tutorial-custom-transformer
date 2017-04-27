@@ -50,7 +50,7 @@ By now you should have a project containing an `./Atviseproject.babel.js` and an
 As we don't want to implement things twice we'll subclass *atscm*'s [Transformer class](https://doc.esdoc.org/github.com/atSCM/atscm/class/src/lib/transform/Transformer.js~Transformer.html). As our transformer shall only be used for JavaScript source files we can even use the [PartialTransformer class](https://doc.esdoc.org/github.com/atSCM/atscm/class/src/lib/transform/PartialTransformer.js~PartialTransformer.html) which supports filtering source files out of the box. As both of these classes are exported from *atscm*'s main file, importing them is pretty straightforward. Inside the *BabelTransformer.js* file add:
  
 ```javascript
-// BabelTransformer.js
+// atscm/BabelTransformer.js
 
 import { PartialTransformer } from 'atscm';
 ```
@@ -60,7 +60,7 @@ import { PartialTransformer } from 'atscm';
 The next step is to create and export out Transformer class:
 
 ```javascript
-// BabelTransformer.js
+// atscm/BabelTransformer.js
 
 import { PartialTransformer } from 'atscm';
 
@@ -130,7 +130,7 @@ lukashechenberger:custom-transformer lukas$ atscm config
 In out case we want to edit all JavaScript source files. Therefore we return true for all files with the extension `.js`. Edit *BabelTransformer.js* accordingly:
 
 ```javascript
-// BabelTransformer
+// atscm/BabelTransformer
 
 ...
 
@@ -160,7 +160,7 @@ We will also need the [node.js buffer module](https://nodejs.org/api/buffer.html
 Next, import these modules as usual:
 
 ```javascript
-// BabelTransformer.js
+// atscm/BabelTransformer.js
 
 import { Buffer } from 'buffer';
 import { PartialTransformer } from 'atscm';
@@ -239,7 +239,7 @@ As said at the beginning, atscm transformers allow transformation from and to th
 We do so by implementing [Transformer#transformFromDB](https://doc.esdoc.org/github.com/atSCM/atscm/class/src/lib/transform/Transformer.js~Transformer.html#instance-method-transformFromDB):
 
 ```
-// BabelTransformer.js
+// atscm/BabelTransformer.js
 ...
 
 export default class BabelTransformer extends PartialTransfromer {
@@ -260,7 +260,7 @@ Now we can run `atscm push` without overriding our ES2015 source code.
 This is how your custom transformer should look now:
 
 ```javascript
-// BabelTransformer.js
+// atscm/BabelTransformer.js
 
 import { Buffer } from 'buffer';
 import { PartialTransformer } from 'atscm';
