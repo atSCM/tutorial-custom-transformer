@@ -1,6 +1,6 @@
 {
   "name": "tutorial-custom-transformer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tutorial on how to create a custom transformer",
   "scripts": {
     "lint": "eslint .",
