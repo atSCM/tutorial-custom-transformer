@@ -57,7 +57,7 @@ import { PartialTransformer } from 'atscm';
 
 ## Step 2: Create the *BabelTransformer* class
 
-The next step is to create and export out Transformer class:
+The next step is to create and export our Transformer class:
 
 ```javascript
 // atscm/BabelTransformer.js
@@ -86,7 +86,7 @@ import BabelTransformer from './atscm/BabelTransformer';
 export default class MyProject extends Atviseproject { ... }
 ```
 
-Now we override the *Atviseproject.useTransformers* [getter](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/get) to use our transformers:
+Now we override the *Atviseproject.useTransformers* [getter](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/get) to use our transformer:
 
 ```javascript
 // Atviseproject.babel.js
@@ -169,7 +169,7 @@ import { transform } from 'babel-core';
 ...
 ```
 
-The import order follows pretty usual convention:
+The import order follows a pretty usual convention:
 
  1. Core **node.js modules** (*buffer* in our case)
  2. Other **absolute modules** (*babel-core* and *atscm* in our case)
