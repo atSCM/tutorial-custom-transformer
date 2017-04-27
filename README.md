@@ -220,12 +220,12 @@ It's time to check if everything works as expected. Create a script file for the
 
 // Class syntax
 class Test {
-  
+
   constructor(options = {}, ...otherArgs) { // Default values and rest params
     this.options = options;
-    this.args = otherArgs.map(arg => parseInt(arg)); // Arrows and Lexical This
+    this.args = otherArgs.map(arg => parseInt(arg, 10)); // Arrows and Lexical This
   }
-  
+
 }
 
 const a = 13; // Constants
@@ -278,7 +278,7 @@ export default class BabelTransformer extends PartialTransformer {
   transformFromFilesystem(file, enc, callback) {
     // Create ES5 code
     const { code } = transform(file.contents, {
-      presets: ['es2015']
+      presets: ['es2015'],
     });
 
     // Create new file with ES5 content
