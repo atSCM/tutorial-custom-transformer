@@ -115,9 +115,9 @@ $ atscm config
    { opc: <span style="color:#A0A">4840</span>,
      http: <span style="color:#A0A">80</span> },
   useTransformers:
-   [ <span style="color:#0AA">DisplayTransformer</span><>,
-     <span style="color:#0AA">ScriptTransformer</span><>,
-     <mark><span style="color:#0AA">BabelTransformer</span><></mark> ],
+   [ <span style="color:#0AA">DisplayTransformer</span>&lt;&gt;,
+     <span style="color:#0AA">ScriptTransformer</span>&lt;&gt;,
+     <mark><span style="color:#0AA">BabelTransformer</span>&lt;&gt;</mark> ],
   nodes:
    <i>...</i>
 </pre>
