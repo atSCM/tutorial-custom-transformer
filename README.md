@@ -39,8 +39,7 @@ As suggested above, we'll store our custom transformer inside a new directory, `
 
 ```bash
 mkdir atscm
-cd atscm
-echo "" > BabelTransformer.js
+touch atscm/BabelTransformer.js
 ```
 
 By now you should have a project containing an `./Atviseproject.babel.js` and an empty `./atscm/BabelTransformer.js` file.
