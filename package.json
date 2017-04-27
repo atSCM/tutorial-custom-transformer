@@ -4,7 +4,8 @@
   "description": "Tutorial on how to create a custom transformer",
   "scripts": {
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint",
+    "prepublish": "npm run test"
   },
   "author": "Lukas Hechenberger <lukas.hechenberger@bachmann.info>",
   "license": "MIT",
