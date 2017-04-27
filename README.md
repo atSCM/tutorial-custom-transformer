@@ -107,20 +107,20 @@ This statement tells *atscm* to use a new *BabelTransformer* instance **in addit
 
 To verify everything worked so far run `atscm config`. Our new Transformer should show up in the *useTransformers* section:
 
-```
-lukashechenberger:custom-transformer lukas$ atscm config
-[10:44:55] Configuration at ~/Documents/Bachmann/atscm/tutorials/custom-transformer/Atviseproject.babel.js 
-{ host: 'localhost',
-  port: 
-   { opc: 4840,
-     http: 80 },
-  useTransformers: 
-   [ DisplayTransformer<>,
-     ScriptTransformer<>,
-     BabelTransformer<> ],
-  nodes: 
-...
-```
+<pre>
+$ atscm config
+[<span style="color: gray">07:30:45</span>] Configuration at ~/custom-transformer/Atviseproject.babel.js
+  { host: <span style="color:#0AA">'localhost'</span>,
+  port:
+   { opc: <span style="color:#A0A">4840</span>,
+     http: <span style="color:#A0A">80</span> },
+  useTransformers:
+   [ <span style="color:#0AA">DisplayTransformer</span><>,
+     <span style="color:#0AA">ScriptTransformer</span><>,
+     <mark><span style="color:#0AA">BabelTransformer</span><></mark> ],
+  nodes:
+   <i>...</i>
+</pre>
 
 ## Step 4: Implement *PartialTransformer#shouldBeTransformed*
 
