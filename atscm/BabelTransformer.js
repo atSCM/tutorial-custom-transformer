@@ -11,7 +11,7 @@ export default class BabelTransformer extends PartialTransformer {
   transformFromFilesystem(file, enc, callback) {
     // Create ES5 code
     const { code } = transform(file.contents, {
-      presets: ['es2015']
+      presets: ['es2015'],
     });
 
     // Create new file with ES5 content
