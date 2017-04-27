@@ -1,7 +1,7 @@
 # Implementing a custom Transformer
 
 In this document we'll guide you through the steps necessary to implement a custom Transformer.
-The transformer we'll implement will use [Babel](http://babeljs.io) to transpile ES2015/ES6 JavaScript to plain ES5 JavaScript that works in all Browsers.
+Our transformer will use [Babel](http://babeljs.io) to transpile ES2015/ES6 JavaScript to plain ES5 JavaScript that works in all Browsers.
 
 ## Overview
 
@@ -49,6 +49,7 @@ touch atscm/BabelTransformer.js
 ```
 
 By now you should have a project containing an `./Atviseproject.babel.js` and an empty `./atscm/BabelTransformer.js` file.
+Make sure the `./src` directory contains at least the *default Main display* which should exist inside `./src/AGENT/DISPLAYS/Main.display`.
 
 ## Step 1: Import *PartialTransformer* class
 
@@ -175,7 +176,7 @@ import { transform } from 'babel-core';
 The import order follows a pretty usual convention:
 
  1. Core **node.js modules** (*buffer* in our case)
- 2. Other **absolute modules** (*babel-core* and *atscm* in our case)
+ 2. Other **external modules** (*babel-core* and *atscm* in our case)
  3. **Relative modules** (*./atscm/BabelTransformer.js* inside *Atviseproject.babel.js* in our case)
  
 Now we're ready to implement *Transformer#transformFromFilesystem*. What we're about to do is pretty simple:
@@ -297,7 +298,7 @@ export default class BabelTransformer extends PartialTransformer {
 
 ## Conclusion
 
-We just created a ES2015-Transformer in no time. It transpiles ES2015 code on push and prevents overriding this code on pull.
+We just created a custom Transformer in no time. It transpiles ES2015 code on push and prevents overriding this code on pull.
 
 Of course there are many ways to improve the transformer, for example:
 
