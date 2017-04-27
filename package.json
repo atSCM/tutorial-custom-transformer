@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Tutorial on how to create a custom transformer",
   "scripts": {
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lukas Hechenberger <lukas.hechenberger@bachmann.info>",
@@ -13,6 +14,11 @@
     "babel-core": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-node6": "^11.0.0",
-    "babel-register": "^6.24.1"
+    "babel-register": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-lsage": "^0.1.0"
+  },
+  "eslintConfig": {
+    "extends": "lsage"
   }
 }
