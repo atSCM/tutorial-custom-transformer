@@ -7,8 +7,16 @@
     "test": "npm run lint",
     "prepublish": "npm run test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atSCM/tutorial-custom-transformer.git"
+  },
   "author": "Lukas Hechenberger <lukas.hechenberger@bachmann.info>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atSCM/tutorial-custom-transformer/issues"
+  },
+  "homepage": "https://github.com/atSCM/tutorial-custom-transformer#readme",
   "private": true,
   "devDependencies": {
     "atscm": "^0.2.4",
