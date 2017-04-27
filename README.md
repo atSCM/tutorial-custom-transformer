@@ -241,7 +241,7 @@ As said at the beginning, atscm transformers allow transformation from and to th
   
 We do so by implementing [Transformer#transformFromDB](https://doc.esdoc.org/github.com/atSCM/atscm/class/src/lib/transform/Transformer.js~Transformer.html#instance-method-transformFromDB):
 
-```
+```javascript
 // atscm/BabelTransformer.js
 ...
 
