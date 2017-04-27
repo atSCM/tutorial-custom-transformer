@@ -27,7 +27,7 @@ export default class MyProject extends Atviseproject {
   
   static get ignoreNodes() {
     return super.ignoreNodes
-      .concat(['ns=1;s=SYSTEM.LIBRARY.ATVISE'])
+      .concat(['ns=1;s=SYSTEM.LIBRARY.ATVISE']);
   }
   
 }
