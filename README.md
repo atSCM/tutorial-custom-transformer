@@ -33,9 +33,15 @@ export default class MyProject extends Atviseproject {
 }
 ```
 
-Pull the empty project by **running `atscm pull`**. We'll use the default project files for testing later.
+Now we're ready to pull the project by running:
 
-As suggested above, we'll store our custom transformer inside a new directory, `./atscm`. Create the directory, enter it and create an empty file called *BabelTransformer.js*:
+```
+atscm pull
+```
+
+We'll use the default project files for testing later.
+
+As suggested above, we'll store our custom transformer inside a new directory, `./atscm`. Create the directory and an empty file called *BabelTransformer.js*:
 
 ```bash
 mkdir atscm
