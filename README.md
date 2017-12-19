@@ -1,5 +1,7 @@
 # Implementing a custom Transformer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/atSCM/tutorial-custom-transformer.svg)](https://greenkeeper.io/)
+
 In this document we'll guide you through the steps necessary to implement a custom Transformer.
 Our transformer will use [Babel](http://babeljs.io) to transpile ES2015/ES6 JavaScript to plain ES5 JavaScript that works in all Browsers.
 
